@@ -164,7 +164,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 rounded-2xl blur-2xl opacity-60" />
                 <div className="relative overflow-hidden rounded-2xl border border-cyan-500/30 bg-slate-800/60">
                   <Image
-                    src="/ceo.jpg"
+                    src="/ceo.jpeg"
                     alt="Sajid Shah"
                     width={400}
                     height={500}

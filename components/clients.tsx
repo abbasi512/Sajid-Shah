@@ -24,11 +24,11 @@ export default function ClientsMarquee() {
   }, []);
   
   const clients = [
-    { name: 'Centric', logo: '/clients/centriQ.png' },
+    { name: 'Centric', logo: '/clients/centric.png' },
     { name: 'Encompass', logo: '/clients/encompass.png' },
-    { name: 'Fix.com', logo: '/clients/fix.png' },
+    { name: 'Fix.com', logo: '/clients/fix.jpeg' },
     { name: 'HomeServe', logo: '/clients/homeserve.png' },
-    { name: 'MSupply', logo: '/clients/msupply.png' },
+    { name: 'MSupply', logo: '/fix.jpeg' },
     { name: 'PartSelect', logo: '/clients/partselect.png' },
   ];
 
