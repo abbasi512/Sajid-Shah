@@ -24,12 +24,12 @@ export default function ClientsMarquee() {
   }, []);
   
   const clients = [
-    { name: 'Centric', logo: '/clients/centric.png' },
-    { name: 'Encompass', logo: '/clients/encompass.png' },
-    { name: 'Fix.com', logo: '/clients/fix.jpeg' },
-    { name: 'HomeServe', logo: '/clients/homeserve.png' },
-    { name: 'MSupply', logo: '/fix.jpeg' },
-    { name: 'PartSelect', logo: '/clients/partselect.png' },
+    { name: 'Centric', logo: '/centriq.jpeg' },
+    { name: 'Encompass', logo: '/encompas.jpeg' },
+    { name: 'Fix.com', logo: '/fix.jpeg' },
+    { name: 'HomeServe', logo: '/homeserve.jpeg' },
+    { name: 'MSupply', logo: '/msupply.jpeg' },
+    { name: 'PartSelect', logo: '/partselect.jpeg' },
   ];
 
   return (
