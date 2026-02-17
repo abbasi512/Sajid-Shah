@@ -1,10 +1,20 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Mail, Linkedin, Twitter, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, Facebook, Instagram } from 'lucide-react';
 
 export default function Contact() {
   const [isVisible, setIsVisible] = useState(false);
+
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,89 +38,139 @@ export default function Contact() {
     };
   }, []);
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error();
+
+      setSuccess(true);
+      setForm({ name: '', email: '', message: '' });
+    } catch {
+      setError('Failed to send message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const socialLinks = [
-    { icon: Linkedin, href: 'https://www.linkedin.com/in/sajidshah/', label: 'LinkedIn', color: 'hover:text-cyan-400', external: true },
-    { icon: Github, href: 'https://github.com', label: 'GitHub', color: 'hover:text-cyan-400', external: true },
-    { icon: Mail, href: 'mailto:hello@onsense.ai', label: 'Email', color: 'hover:text-cyan-400', external: false },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/sajidshah/' },
+    { icon: Facebook, href: 'https://www.facebook.com/SajidShah44' },
+    { icon: Instagram, href: 'https://www.instagram.com/shahsahbb/' },
   ];
 
   return (
     <section id="contact-section" className="relative py-24 px-4 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-indigo-500/5 rounded-full blur-3xl"></div>
+      {/* Background blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[40vw] max-w-[18rem] aspect-square bg-cyan-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/2 translate-x-1/2 w-[35vw] max-w-[16rem] aspect-square bg-indigo-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
-        {/* Main CTA */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-5xl md:text-6xl font-light mb-8">
+        {/* Heading */}
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="text-5xl md:text-6xl font-light mb-6">
             <span className="text-white">Let's </span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-indigo-400 to-cyan-400">
               Connect
             </span>
           </h2>
-          
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed mb-12">
-            I'm always excited to discuss AI innovation, strategic partnerships, and how we can transform your industry together.
+
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            Let’s build something meaningful together.
           </p>
-
-          {/* Email highlight */}
-          <div className={`flex justify-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} style={{ transitionDelay: '0.2s' }}>
-            <a
-              href="mailto:hello@onsense.ai"
-              className="group px-8 py-4 bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 border border-cyan-500/50 rounded-xl hover:border-cyan-400 hover:from-cyan-500/30 hover:to-indigo-500/30 transition-all duration-300 flex items-center gap-3"
-            >
-              <Mail className="w-5 h-5 text-cyan-400" />
-              <span className="text-white font-medium">hello@onsense.ai</span>
-              <span className="text-cyan-400 group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </a>
-          </div>
-
-          {/* Social Links */}
-          <div className={`flex justify-center gap-6 flex-wrap transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '0.4s' }}>
-            {socialLinks.map((social, index) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  {...(social.external && { target: '_blank', rel: 'noopener noreferrer' })}
-                  className={`p-3 bg-slate-800/40 border border-cyan-500/10 rounded-lg transition-all duration-300 text-gray-400 ${social.color}`}
-                >
-                  <Icon className="w-6 h-6" />
-                </a>
-              );
-            })}
-          </div>
         </div>
 
-        {/* Info Grid */}
-        <div className={`grid md:grid-cols-3 gap-8 mt-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '0.6s' }}>
-          <div className="text-center p-6 border border-cyan-500/10 rounded-xl hover:border-cyan-400/30 transition-colors duration-300">
-            <p className="text-sm text-gray-400 mb-2">Location</p>
-            <p className="text-white font-medium">Berkeley, CA, USA</p>
-            <p className="text-xs text-gray-500">HQ: Sacramento, CA</p>
-          </div>
-          
-          <div className="text-center p-6 border border-cyan-500/10 rounded-xl hover:border-cyan-400/30 transition-colors duration-300">
-            <p className="text-sm text-gray-400 mb-2">Company</p>
-            <p className="text-white font-medium">OnSense.AI</p>
-            <p className="text-xs text-cyan-400">Equipment Management Backbone</p>
+        {/* Contact Form */}
+        <form
+          onSubmit={handleSubmit}
+          className={`max-w-2xl mx-auto grid gap-6 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{ transitionDelay: '0.2s' }}
+        >
+          <div className="grid md:grid-cols-2 gap-6">
+            <input
+              type="text"
+              placeholder="Your Name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              required
+              className="px-4 py-3 bg-slate-900/60 border border-cyan-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+            />
+
+            <input
+              type="email"
+              placeholder="Your Email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              required
+              className="px-4 py-3 bg-slate-900/60 border border-cyan-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-400"
+            />
           </div>
 
-          <div className="text-center p-6 border border-cyan-500/10 rounded-xl hover:border-cyan-400/30 transition-colors duration-300">
-            <p className="text-sm text-gray-400 mb-2">Expertise</p>
-            <p className="text-white font-medium">AI/ML & PropTech</p>
-            <p className="text-xs text-gray-500">Industry 4.0</p>
-          </div>
+          <textarea
+            rows={5}
+            placeholder="Your Message"
+            value={form.message}
+            onChange={(e) => setForm({ ...form, message: e.target.value })}
+            required
+            className="px-4 py-3 bg-slate-900/60 border border-cyan-500/20 rounded-lg text-white placeholder-gray-400 resize-none focus:outline-none focus:border-cyan-400"
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-indigo-500 text-slate-900 font-medium rounded-xl hover:shadow-lg hover:shadow-cyan-500/40 transition-all disabled:opacity-60"
+          >
+            {loading ? 'Sending...' : 'Send Message'}
+          </button>
+
+          {success && (
+            <p className="text-green-400 text-center">
+              Message sent successfully 🚀
+            </p>
+          )}
+
+          {error && (
+            <p className="text-red-400 text-center">{error}</p>
+          )}
+        </form>
+
+        {/* Social links */}
+        <div className="flex justify-center gap-6 mt-20">
+          {socialLinks.map((social, i) => {
+            const Icon = social.icon;
+            return (
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-slate-800/40 border border-cyan-500/10 rounded-lg text-gray-400 hover:text-cyan-400 transition"
+              >
+                <Icon className="w-6 h-6" />
+              </a>
+            );
+          })}
         </div>
       </div>
 
-      {/* Bottom divider */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
     </section>
   );
 }

@@ -1,164 +1,119 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Briefcase, GraduationCap } from 'lucide-react';
+import { Briefcase, Globe, Users, Building2 } from 'lucide-react';
 
-export default function Experience() {
+export default function Portfolio() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.1 }
     );
 
-    const section = document.getElementById('experience-section');
-    if (section) {
-      observer.observe(section);
-    }
+    const section = document.getElementById('portfolio-section');
+    if (section) observer.observe(section);
 
     return () => {
-      if (section) {
-        observer.unobserve(section);
-      }
+      if (section) observer.unobserve(section);
     };
   }, []);
 
-  const experiences = [
+  const portfolioItems = [
     {
-      role: 'Chief Executive Officer',
-      company: 'OnSense.AI',
-      period: 'Apr 2024 - Present',
-      description: 'Leading the equipment management backbone company, building AI solutions for predictive maintenance and intelligent repair systems serving OEMs, property managers, and service technicians globally.',
+      title: 'OnSense AI',
+      role: 'Founder & CEO',
+      icon: Building2,
+      description:
+        'Built and led OnSense AI, an AI-driven platform improving troubleshooting, repair, and maintenance for appliances and HVAC systems. The platform standardized fragmented technical knowledge into scalable systems used by property managers and service organizations to improve efficiency and service outcomes.',
+    },
+    {
+      title: 'Resourcex.io',
+      role: 'Founder & CEO',
       icon: Briefcase,
+      description:
+        'Founded Resourcex.io to build the ultimate back office for the home management and repair industry, providing tailored remote teams and operational systems that elevate customer experience and business performance.',
     },
     {
-      role: 'Chief Executive Officer',
-      company: 'resourcex.io',
-      period: 'Jan 2021 - Present',
-      description: 'Scaled a 150+ engineer company providing remote teams and solutions for home management and repair industry. Pioneered sophisticated Asset Age Extraction technology.',
-      icon: Briefcase,
+      title: 'Empower Pakistan',
+      role: 'Co-Founder & CEO',
+      icon: Users,
+      description:
+        'Co-founded Empower Pakistan, a social venture focused on empowering Pakistani youth through digital literacy, freelancing training, and employment opportunities—driving measurable impact on economic participation.',
     },
     {
-      role: 'Director of Content Development',
-      company: 'Centriq Technology',
-      period: 'Jun 2015 - Apr 2021',
-      description: 'Built and scaled content curation system from scratch, managing 150+ engineers. Designed the world\'s leading product age extraction system with 75% OEM coverage.',
-      icon: Briefcase,
-    },
-    {
-      role: 'Founding Director',
-      company: 'Empower Pakistan',
-      period: 'Jun 2014 - Jan 2021',
-      description: 'Founded nonprofit empowering Pakistani youth through digital literacy and freelancing training. Trained 1000+ professionals and generated $500K+ in revenue for participants.',
-      icon: Briefcase,
-    },
-  ];
-
-  const education = [
-    {
-      degree: 'Master of Science',
-      field: 'Electrical Engineering (RF & Microwave Design)',
-      institution: 'National University of Science and Technology',
-      period: '2010 - 2013',
-    },
-    {
-      degree: 'Bachelor of Science',
-      field: 'Electrical Engineering',
-      institution: 'International Islamic University, Islamabad',
-      period: '2005 - 2009',
-    },
-    {
-      degree: 'Emerging Leaders Program',
-      field: 'Leadership & Strategic Innovation',
-      institution: 'Atlantic Council',
-      period: '2014 - 2015',
+      title: 'ICT4D — World Bank Group',
+      role: 'ICT4D Consultant',
+      icon: Globe,
+      description:
+        'Worked as an ICT4D consultant with The World Bank Group and partner governments, supporting digital empowerment initiatives and large-scale capacity-building programs across emerging economies.',
     },
   ];
 
   return (
-    <section id="experience-section" className="relative py-24 px-4 bg-gradient-to-b from-slate-900/20 to-slate-900/50">
+    <section
+      id="portfolio-section"
+      className="relative py-24 px-4 bg-gradient-to-b from-slate-900/20 to-slate-900/50"
+    >
       <div className="max-w-6xl mx-auto">
-        {/* Section title */}
-        <div className={`text-center mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        {/* Section Title */}
+        <div
+          className={`text-center mb-20 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-5xl md:text-6xl font-light mb-6">
-            <span className="text-white">Experience </span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-400">&amp; Education</span>
+            <span className="text-white">Portfolio</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto rounded-full"></div>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
+            Companies built, systems scaled, and initiatives led across technology,
+            operations, and social impact.
+          </p>
+          <div className="w-20 h-1 bg-gradient-to-r from-cyan-500 to-indigo-500 mx-auto rounded-full mt-6" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16">
-          {/* Experience */}
-          <div>
-            <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-              <h3 className="text-2xl font-light text-white mb-8 flex items-center gap-3">
-                <Briefcase className="w-6 h-6 text-cyan-400" />
-                Professional Experience
-              </h3>
-
-              <div className="space-y-6">
-                {experiences.map((exp, index) => (
-                  <div
-                    key={index}
-                    className={`border-l-2 border-cyan-500/30 pl-6 pb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}
-                    style={{ transitionDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <h4 className="text-lg font-semibold text-white">{exp.role}</h4>
-                      <span className="text-xs text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">{exp.period}</span>
-                    </div>
-                    <p className="text-cyan-400 font-medium mb-2">{exp.company}</p>
-                    <p className="text-gray-300 text-sm leading-relaxed">{exp.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Education */}
-          <div>
-            <div className={`mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <h3 className="text-2xl font-light text-white mb-8 flex items-center gap-3">
-                <GraduationCap className="w-6 h-6 text-indigo-400" />
-                Education
-              </h3>
-
-              <div className="space-y-6">
-                {education.map((edu, index) => (
-                  <div
-                    key={index}
-                    className={`bg-slate-800/30 border border-indigo-500/20 rounded-lg p-6 hover:border-indigo-400/50 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}
-                    style={{ transitionDelay: `${index * 0.1}s` }}
-                  >
-                    <h4 className="text-lg font-semibold text-white mb-1">{edu.degree}</h4>
-                    <p className="text-indigo-400 text-sm mb-2">{edu.field}</p>
-                    <p className="text-gray-400 text-sm mb-2">{edu.institution}</p>
-                    <p className="text-xs text-gray-500">{edu.period}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Skills section */}
-        <div className={`mt-20 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: '0.4s' }}>
-          <h3 className="text-2xl font-light text-white mb-8">Key Skills</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['Machine Learning', 'Equipment Diagnostics', 'Team Leadership', 'Strategic Vision', 'Product Development', 'Startup Scaling', 'PropTech', 'Industry 4.0'].map((skill, index) => (
+        {/* Portfolio Grid */}
+        <div className="grid md:grid-cols-2 gap-12">
+          {portfolioItems.map((item, index) => {
+            const Icon = item.icon;
+            return (
               <div
                 key={index}
-                className="px-4 py-3 bg-slate-800/40 border border-cyan-500/20 rounded-lg text-center text-sm text-gray-300 hover:border-cyan-400/50 hover:bg-slate-800/60 transition-all duration-300"
+                className={`group relative p-8 bg-slate-800/30 border border-cyan-500/10 rounded-2xl hover:border-cyan-400/40 hover:bg-slate-800/50 transition-all duration-500 ${
+                  isVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: `${index * 0.1}s` }}
               >
-                {skill}
+                {/* Icon */}
+                <div className="mb-6 flex items-center gap-4">
+                  <div className="p-4 bg-cyan-500/10 rounded-xl group-hover:bg-cyan-500/20 transition-colors">
+                    <Icon className="w-7 h-7 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-light text-white">
+                      {item.title}
+                    </h3>
+                    <p className="text-cyan-400 text-sm font-medium">
+                      {item.role}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {item.description}
+                </p>
+
+                {/* Subtle Accent */}
+                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

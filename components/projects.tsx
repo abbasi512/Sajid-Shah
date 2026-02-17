@@ -84,44 +84,11 @@ export default function Projects() {
           <p className="text-gray-400 max-w-2xl">Groundbreaking solutions that transform equipment management and repair industries.</p>
         </div>
 
-        {/* Featured Project */}
-        {projects[0] && (
-          <div className={`mb-20 transition-all duration-1000 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-            <div className="group relative bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-cyan-500/20 rounded-2xl p-8 md:p-12 hover:border-cyan-400/50 transition-all duration-300 cursor-pointer overflow-hidden">
-              {/* Animated gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              
-              <div className="relative z-10">
-                <div className="flex items-start justify-between gap-6 mb-6">
-                  <div className="flex-1">
-                    <h3 className="text-4xl font-light text-white mb-4">{projects[0].title}</h3>
-                    <p className="text-gray-300 text-lg leading-relaxed">{projects[0].description}</p>
-                  </div>
-                  <div className="p-3 bg-cyan-500/10 rounded-lg group-hover:bg-cyan-500/20 group-hover:scale-110 transition-all duration-300">
-                    <ArrowUpRight className="w-6 h-6 text-cyan-400" />
-                  </div>
-                </div>
-
-                <div className="flex flex-wrap gap-3 mb-6">
-                  {projects[0].tags.map((tag, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-sm rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <p className="text-cyan-400 font-medium flex items-center gap-2">
-                  <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
-                  {projects[0].impact}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
+       
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.slice(1).map((project, index) => (
+          {projects.map((project, index) => (
             <div
               key={index}
               className={`group relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}

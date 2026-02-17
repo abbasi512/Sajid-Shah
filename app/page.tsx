@@ -5,6 +5,7 @@ import Experience from '@/components/experience';
 import Projects from '@/components/projects';
 import Contact from '@/components/contact';
 import Footer from '@/components/footer';
+import Clients from '@/components/clients';
 
 export const metadata = {
   title: 'Sajid Shah | CEO of OnSense.AI - Equipment Management & AI Innovation',
@@ -23,7 +24,8 @@ export default function Home() {
       <Hero />
       <About />
       <Experience />
-      <Projects />
+      <Clients/>
+      {/* <Projects /> */}
       <Contact />
       <Footer />
     </main>

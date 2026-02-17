@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Mail, Linkedin, Facebook, Instagram } from 'lucide-react';
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -12,53 +12,107 @@ export default function Footer() {
   return (
     <footer className="relative bg-slate-950/80 border-t border-cyan-500/20 py-16 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-indigo-400 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">A</span>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-lg overflow-hidden border border-cyan-500/30">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D4E03AQELQqqDEujPdg/profile-displayphoto-shrink_800_800/B4EZXQg45rG0Ac-/0/1742960038420?e=1772064000&v=beta&t=rAA-xCVJsJvaPk5z7jtbTQLf6fxsnzSp8frIu59i0H0"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <span className="text-white font-light">CEO Portfolio</span>
+              <span className="text-white font-light text-lg">
+                Sajid Shah
+              </span>
             </div>
-            <p className="text-gray-400 text-sm">Leading innovation in AI and equipment intelligence.</p>
+            <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+              Technologist, entrepreneur, and system builder focused on applied AI,
+              operational clarity, and scalable impact.
+            </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
             <h4 className="text-white font-semibold mb-4">Navigation</h4>
             <ul className="space-y-2">
-              <li><a href="#about-section" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">About</a></li>
-              <li><a href="#projects-section" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Projects</a></li>
-              <li><a href="#contact-section" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Blog</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Speaking</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Press</a></li>
+              <li>
+                <a
+                  href="#about-section"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#portfolio-section"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
+                >
+                  Portfolio
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#clients-section"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
+                >
+                  Clients
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#contact-section"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Connect */}
           <div>
             <h4 className="text-white font-semibold mb-4">Connect</h4>
-            <ul className="space-y-2">
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">LinkedIn</a></li>
-              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Twitter</a></li>
-              <li><a href="mailto:ceo@onsense.ai" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">Email</a></li>
+            <ul className="space-y-3">
+              {/* Email */}
+              <li className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                <Mail className="w-4 h-4" />
+                <a href="mailto:sajid@onsense.ai">sajid@onsense.ai</a>
+              </li>
+
+              {/* LinkedIn */}
+              <li className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                <Linkedin className="w-4 h-4" />
+                <a href="https://www.linkedin.com/in/sajidshah/" target="_blank" rel="noopener noreferrer">
+                  sajidshah
+                </a>
+              </li>
+
+              {/* Facebook */}
+              <li className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                <Facebook className="w-4 h-4" />
+                <a href="https://www.facebook.com/SajidShah44" target="_blank" rel="noopener noreferrer">
+                  SajidShah44
+                </a>
+              </li>
+
+              {/* Instagram */}
+              <li className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm">
+                <Instagram className="w-4 h-4" />
+                <a href="https://www.instagram.com/shahsahbb/" target="_blank" rel="noopener noreferrer">
+                  shahsahbb
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Divider */}
+        {/* Bottom Bar */}
         <div className="border-t border-cyan-500/10 pt-8 flex items-center justify-between">
           <p className="text-gray-500 text-sm">
-            © {currentYear} CEO Portfolio. All rights reserved.
+            © {currentYear} Sajid Shah. All rights reserved.
           </p>
 
           <button
