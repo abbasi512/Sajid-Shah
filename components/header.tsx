@@ -36,7 +36,7 @@ export default function Header() {
         <a href="#" className="group flex items-center gap-3">
           <div className="w-10 h-10 rounded-lg overflow-hidden border border-cyan-500/30">
             <img
-              src="https://media.licdn.com/dms/image/v2/D4E03AQELQqqDEujPdg/profile-displayphoto-shrink_800_800/B4EZXQg45rG0Ac-/0/1742960038420?e=1772064000&v=beta&t=rAA-xCVJsJvaPk5z7jtbTQLf6fxsnzSp8frIu59i0H0"
+              src="https://media.licdn.com/dms/image/v2/D4E03AQELQqqDEujPdg/profile-displayphoto-shrink_800_800/B4EZXQg45rG0Ac-/0/1742960038420?e=1776297600&v=beta&t=FB4J6IVLc5XWp1ZKSTpUGmoXrNTkilqxHHRZifcvO8w"
               alt="Sajid Shah"
               className="w-full h-full object-cover"
             />
